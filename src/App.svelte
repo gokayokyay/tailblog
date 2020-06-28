@@ -5,11 +5,11 @@
 	// export let name;
 </script>
 
-<div class="flex">
-  <div class="w-full md:w-1/3 bg-gray-600 h-full" />
-  <main>
+<div class="flex flex-col-reverse md:flex-row w-screen">
+  <div class="w-full md:sidebar bg-gray-600" />
+  <main class="overflow-auto h-screen flex-4 md:main" >
     <Header />
     <Feed />
   </main>
 </div>
-<Hero />
+<!-- <Hero /> -->

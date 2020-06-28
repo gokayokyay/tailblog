@@ -622,6 +622,14 @@ video {
   color: rgba(0, 0, 0, var(--text-opacity))
 }
 
+.sidebar {
+  flex: 1;
+}
+
+.main {
+  flex: 4;
+}
+
 .space-y-0 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
@@ -14914,6 +14922,14 @@ video {
 }
 
 @media (min-width: 640px) {
+  .sm\:sidebar {
+    flex: 1;
+  }
+
+  .sm\:main {
+    flex: 4;
+  }
+
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
@@ -29207,6 +29223,14 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:sidebar {
+    flex: 1;
+  }
+
+  .md\:main {
+    flex: 4;
+  }
+
   .md\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
@@ -43500,6 +43524,14 @@ video {
 }
 
 @media (min-width: 1024px) {
+  .lg\:sidebar {
+    flex: 1;
+  }
+
+  .lg\:main {
+    flex: 4;
+  }
+
   .lg\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
@@ -57793,6 +57825,14 @@ video {
 }
 
 @media (min-width: 1280px) {
+  .xl\:sidebar {
+    flex: 1;
+  }
+
+  .xl\:main {
+    flex: 4;
+  }
+
   .xl\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--space-y-reverse)));
