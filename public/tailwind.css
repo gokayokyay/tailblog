@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+.nav-li {
+  @apply px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black
+}
+@tailwind utilities;
