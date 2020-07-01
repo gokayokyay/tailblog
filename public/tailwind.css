@@ -5,7 +5,8 @@
 }
 @responsive {
   .sidebar {
-    flex: 1;
+    flex: 2;
+    max-width: 440px;
   }
   .main {
     flex: 4;

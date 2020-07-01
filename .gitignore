@@ -107,3 +107,5 @@ dist
 /public/build/
 
 .DS_Store
+
+/public/index.css
