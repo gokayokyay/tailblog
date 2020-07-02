@@ -12,4 +12,24 @@
     flex: 4;
   }
 }
+/* For one line inputs */
+.text-input {
+  @apply shadow-md appearance-none border-gray-800 border-b-4 rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+.text-input:focus {
+  @apply outline-none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+/* For text areas */
+.text-area {
+  @apply shadow-md resize-none appearance-none border-gray-800 border-b-4 rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+.text-area:focus {
+  @apply outline-none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.input-label {
+  @apply block text-gray-900 text-sm font-bold mb-2;
+}
 @tailwind utilities;
