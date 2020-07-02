@@ -1,0 +1,1 @@
+<div class="w-full md:sidebar bg-gray-600" />
