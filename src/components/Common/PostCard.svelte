@@ -3,7 +3,7 @@
     <!-- Date -->
     <div class="w-16 h-16 pt-1 pl-3 flex-shrink-0 flex flex-col text-center leading-none absolute right-0 bg-white rounded-bl-full">
       <span class="text-gray-700 mb-2">Jul</span>
-      <span class="font-medium text-xl text-gray-500 title-font">18</span>
+      <span class="font-medium text-gray-500 text-base">18</span>
     </div>
     <!-- Date -->
     <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog">

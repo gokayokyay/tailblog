@@ -109,6 +109,7 @@ dist
 .DS_Store
 
 /public/index.css
+/static/index.css
 .DS_Store
 node_modules
 __sapper__
