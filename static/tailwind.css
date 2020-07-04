@@ -30,6 +30,6 @@
 }
 
 .input-label {
-  @apply block text-gray-900 text-sm font-bold mb-2;
+  @apply block text-black text-sm font-bold mb-2;
 }
 @tailwind utilities;
