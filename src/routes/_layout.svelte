@@ -1,5 +1,5 @@
 <script>
-  import Hero from '../components/Home/Hero.svelte';
+  import Hero from '../components/Common/Hero.svelte';
   import Header from '../components/Common/Header.svelte';
   import Footer from '../components/Common/Footer.svelte';
 </script>

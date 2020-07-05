@@ -25,4 +25,6 @@ ___
   `);
 </script>
 <h1>TEST</h1>
-{@html html}
+<div class="font-serif">
+  {@html html}
+</div>

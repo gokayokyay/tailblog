@@ -1,4 +1,13 @@
 @tailwind base;
+h1 {
+  @apply text-2xl font-black;
+}
+h2 {
+  @apply text-xl font-bold;
+}
+h3 {
+  @apply text-lg font-bold;
+}
 @tailwind components;
 .nav-li {
   @apply px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black
@@ -12,24 +21,40 @@
     flex: 4;
   }
 }
+.border-bottom-black {
+  @apply border-gray-800 border-b-4;
+}
 /* For one line inputs */
 .text-input {
-  @apply shadow-md appearance-none border-gray-800 border-b-4 rounded w-full py-2 px-3 text-gray-700 leading-tight;
+  @apply shadow-md appearance-none rounded w-full py-2 px-3 leading-tight;
 }
 .text-input:focus {
-  @apply outline-none;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+  @apply outline-none shadow-outline-black;
 }
 /* For text areas */
 .text-area {
-  @apply shadow-md resize-none appearance-none border-gray-800 border-b-4 rounded w-full py-2 px-3 text-gray-700 leading-tight;
+  @apply shadow-md resize-none appearance-none rounded w-full py-2 px-3 leading-tight;
 }
 .text-area:focus {
+  @apply outline-none shadow-outline-black;
+}
+
+/* Buttons */
+.button-basic {
+  @apply shadow-md rounded py-2 px-4 font-bold;
+}
+.button-basic:focus {
   @apply outline-none;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+.button-basic:active {
+  @apply outline-none;
 }
 
 .input-label {
   @apply block text-black text-sm font-bold mb-2;
 }
+
 @tailwind utilities;
+.shadow-outline-black {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
