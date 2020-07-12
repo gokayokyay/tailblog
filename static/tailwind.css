@@ -29,14 +29,21 @@ h3 {
   @apply shadow-md appearance-none rounded w-full py-2 px-3 leading-tight;
 }
 .text-input:focus {
-  @apply outline-none shadow-outline-black;
+  @apply outline-none;
 }
 /* For text areas */
 .text-area {
   @apply shadow-md resize-none appearance-none rounded w-full py-2 px-3 leading-tight;
 }
 .text-area:focus {
-  @apply outline-none shadow-outline-black;
+  @apply outline-none;
+}
+/* For areas - containers with function */
+.area {
+  @apply shadow-md appearance-none rounded w-full py-2 px-3 leading-tight;
+}
+.area:focus {
+  @apply outline-none;
 }
 
 /* Buttons */
@@ -55,6 +62,8 @@ h3 {
 }
 
 @tailwind utilities;
-.shadow-outline-black {
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+@variants focus {
+  .shadow-outline-black {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+  }
 }
