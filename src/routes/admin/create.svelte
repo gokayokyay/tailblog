@@ -4,8 +4,12 @@
 
 
 <script>
+  import { toBase64 } from '../../utils';
   import { post } from './';
+  import { PostHero } from '../../stores';
   let fileUploadInput;
+  let fileUploadDiv;
+  let fileUploadURL;
   const onFileUploadContainerClick = () => {
     fileUploadInput.click();
   };
@@ -14,36 +18,64 @@
     const file = { data };
     handleFile(file);
   };
-  const handleFile = file => {
-    console.log(file);
+  const handleFile = async file => {
+    const b64 = await toBase64(file);
+    fileUploadDiv.style.background = `url("${b64}")`;
+    const formData = new FormData();
+    formData.append('image', b64.split(',')[1]);
+    const response = await fetch('https://api.imgbb.com/1/upload?key=95a1c47046692660f17be9730c009065', {
+      method: 'POST',
+      body: formData
+    });
+    const { data: result } = await response.json();
+    PostHero.update(c => ({ ...c, imageURL: result.display_url }));
+  };
+  const handleFileURL = () => {
+    const url = fileUploadURL;
+    PostHero.update(c => ({ ...c, imageURL: url }));
+  };
+  const valueChange = prop => ({ target: { value }}) => {
+    PostHero.update(c => ({ ...c, [prop]: value }))
   };
 </script>
 
 <div class="p-4">
   <div>
+    <label class="input-label text-base" for="hero-bg-image">
+      Hero Background Image
+    </label>
+    <div class="my-2 flex border-bottom-black rounded">
+      <input on:change={valueChange('backgroundImageURL')} class="text-input text-gray-700 bg-gray-100" id="hero-bg-image" placeholder="Paste image URL here..." />
+    </div>
+      <label class="input-label text-base" for="hero-bg-image">
+      Hero Description
+    </label>
+    <div class="my-2 flex border-bottom-black rounded">
+      <input on:change={valueChange('description')} class="text-input text-gray-700 bg-gray-100" id="hero-bg-image" placeholder="Just a small description." />
+    </div>
     <input type="file" accept="image/*" multiple="false" class="hidden" bind:this={fileUploadInput} on:change={e => { handleFile(e.target.files[0]); }}/>
     <label class="input-label text-base" for="cover-url">
       Post Cover
     </label>
-    <div on:click={onFileUploadContainerClick} class="p-4 flex justify-center bg-gray-300 area border-bottom-black cursor-pointer">
+    <div bind:this={fileUploadDiv} on:click={onFileUploadContainerClick} class="p-4 flex justify-center bg-gray-300 area border-bottom-black cursor-pointer">
       <span class="p-8 border-gray-600 text-gray-700 text-center border-dashed rounded border-4">
         Click here to upload image
       </span>
     </div>
     <div class="mt-4 flex border-bottom-black rounded">
-      <input class="text-input text-gray-700 bg-gray-100" id="cover-url" placeholder="Or paste image URL here..." />
-      <button class="button-basic rounded-tl-none rounded-b-none bg-black text-white active:bg-white active:text-black">Upload</button>
+      <input bind:value={fileUploadURL} class="text-input text-gray-700 bg-gray-100" id="cover-url" placeholder="Or paste image URL here..." />
+      <button on:click={handleFileURL} class="button-basic rounded-tl-none rounded-b-none bg-black text-white active:bg-white active:text-black">OK</button>
     </div>
   </div>
   <div class="mt-2">
     <label class="input-label mt-4 text-base" for="title">
       Post Title
     </label>
-    <input class="text-input border-bottom-black text-gray-700 bg-gray-100 focus:shadow-outline-black" id="title" />
+    <input class="text-input border-bottom-black text-gray-700 bg-gray-100 focus:shadow-outline-black" id="title" on:change={valueChange('title')} />
     <label class="input-label mt-4 text-base" for="category">
       Post Category
     </label>
-    <input class="text-input border-bottom-black text-gray-700 bg-gray-100 focus:shadow-outline-black" id="category" />
+    <input class="text-input border-bottom-black text-gray-700 bg-gray-100 focus:shadow-outline-black" id="category" on:change={valueChange('category')} />
 
     <label class="input-label mt-4 text-base" for="content" id="content-label">
       Post Content

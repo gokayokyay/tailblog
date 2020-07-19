@@ -61,6 +61,10 @@ h3 {
   @apply block text-black text-sm font-bold mb-2;
 }
 
+.min-h-12 {
+  min-height: 3rem;
+}
+
 @tailwind utilities;
 @variants focus {
   .shadow-outline-black {
