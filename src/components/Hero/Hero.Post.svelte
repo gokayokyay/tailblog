@@ -12,14 +12,35 @@
   .separator {
     margin-top: 0.6rem;
   }
+  :global(#tooltip) {
+    display: none;
+  }
+
+  :global(#tooltip[data-show]) {
+    display: block;
+  }
 </style>
 
 <script>
+  import { createPopper } from '@popperjs/core/lib/popper-lite.js';
+  import { onMount } from 'svelte';
   import { PostHero } from '../../stores';
   import LinkedInShare from '../Common/LinkedIn.Share.svelte';
   import TwitterShare from '../Common/Twitter.Share.svelte';
   import FacebookShare from '../Common/Facebook.Share.svelte';
-  let content;
+  let content, popover, popoverBtn;
+  onMount(() => {
+    createPopper(popoverBtn, popover, {
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 0],
+          },
+        },
+      ],
+    });
+  });
   PostHero.subscribe(c => {
     content = c;
     console.log(c);
@@ -40,7 +61,11 @@
       <p class="leading-relaxed mt-2">{content.description}</p>
     </div>
     <div class="p-4 flex">
-      <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
+      <button bind:this={popoverBtn} on:click={() => {
+        popover.attributes.hasOwnProperty('data-show') ?
+          popover.removeAttribute('data-show') :
+          popover.setAttribute('data-show', '');
+      }}>
         <div class="h-6 w-6">            
           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
               viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -59,7 +84,7 @@
               z"/>
           </svg>
         </div>
-      </a>
+      </button>
       <div class="flex-1">
         <div class="h-1 flex-1 separator bg-gray-400 rounded" />
       </div>
@@ -72,6 +97,9 @@
         <div class="h-1 flex-1 separator bg-gray-400 rounded" />
       </div>
       <LinkedInShare />
+    </div>
+    <div id="tooltip" bind:this={popover} class="px-4 py-2 rounded bg-gray-800 text-white">
+      Yello
     </div>
   </div>
 </div>

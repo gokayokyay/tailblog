@@ -8,6 +8,7 @@ export async function HeroMap(val) {
     }
     case 'admin': {
       switch (val.path.split('/')[2]) {
+        case 'preview':
         case 'create': {
           const { default: postComp } = await import('./Hero.Post.svelte');
           comp = postComp;
