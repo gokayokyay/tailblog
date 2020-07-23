@@ -24,7 +24,11 @@ ___
 ## Typographic replacements
   `);
 </script>
-<h1>TEST</h1>
-<div class="font-serif">
-  {@html html}
+<div class="post-page">
+  <div class="post-page-content">
+    <h1 class="text-center">
+      Title
+    </h1>
+    Content
+  </div>
 </div>

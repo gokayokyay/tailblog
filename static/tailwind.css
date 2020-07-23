@@ -65,6 +65,14 @@ h3 {
   min-height: 3rem;
 }
 
+.post-page-root {
+  @apply w-full p-4 bg-gray-900 relative pt-16;
+}
+
+.post-page-main {
+  @apply bg-gray-100 rounded-md p-4;
+}
+
 @tailwind utilities;
 @variants focus {
   .shadow-outline-black {

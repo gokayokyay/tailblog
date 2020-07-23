@@ -35,7 +35,8 @@
     PostHero.update(c => ({ ...c, imageURL: url }));
   };
   const valueChange = prop => ({ target: { value }}) => {
-    PostHero.update(c => ({ ...c, [prop]: value }))
+    post.update(c => ({ ...c, [prop]: value }));
+    PostHero.update(c => ({ ...c, [prop]: value }));
   };
 </script>
 
