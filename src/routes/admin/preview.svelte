@@ -7,9 +7,18 @@
     post = { ...val, content: marked(val.content) };
   });
 </script>
-<div class="post-page-root">
-  <div class="absolute bg-red-500 w-12 h-12 top-0 left-0 right-0 m-auto">
 
+<style>
+  .author > img {
+    max-width: 75%;
+  }
+  
+</style>
+
+<div class="post-page-root">
+  <div class="author absolute w-32 h-28 top-0 mt-8 left-0 right-0 m-auto">
+    <img class="m-auto border-4 border-gray-100 rounded-full cover" src="https://i.pravatar.cc/300" alt="avatar" />
+    <p class="font-bold text-center">John Smith</p>
   </div>
   <div class="post-page-main">
     <div class="post-page-head">
@@ -21,9 +30,9 @@
         This is Title
       </h1>
       <div class="text-center">
-        <span class="text-gray-500 text-sm">
-          Category: API
-        </span>
+        <p class="text-gray-500 tracking-widest text-sm">
+          API Development & Tricks
+        </p>
       </div>
     </div>
     This is content
