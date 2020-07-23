@@ -45,19 +45,19 @@
       Hero Background Image
     </label>
     <div class="my-2 flex border-bottom-black rounded">
-      <input on:change={valueChange('backgroundImageURL')} class="text-input text-gray-700 bg-gray-100" id="hero-bg-image" placeholder="Paste image URL here..." />
+      <input on:change={valueChange('backgroundImageURL')} class="text-input text-gray-700 bg-gray-100 focus:shadow-outline-black" id="hero-bg-image" placeholder="Paste image URL here..." />
     </div>
-      <label class="input-label text-base" for="hero-bg-image">
+      <label class="input-label text-base" for="hero-bg-desc">
       Hero Description
     </label>
     <div class="my-2 flex border-bottom-black rounded">
-      <input on:change={valueChange('description')} class="text-input text-gray-700 bg-gray-100" id="hero-bg-image" placeholder="Just a small description." />
+      <input on:change={valueChange('description')} class="text-input text-gray-700 bg-gray-100 focus:shadow-outline-black" id="hero-bg-desc" placeholder="Just a small description." />
     </div>
     <input type="file" accept="image/*" multiple="false" class="hidden" bind:this={fileUploadInput} on:change={e => { handleFile(e.target.files[0]); }}/>
     <label class="input-label text-base" for="cover-url">
       Post Cover
     </label>
-    <div bind:this={fileUploadDiv} on:click={onFileUploadContainerClick} class="p-4 flex justify-center bg-gray-300 area border-bottom-black cursor-pointer">
+    <div bind:this={fileUploadDiv} on:click={onFileUploadContainerClick} class="p-8 flex justify-center bg-gray-300 area border-bottom-black cursor-pointer">
       <span class="p-8 border-gray-600 text-gray-700 text-center border-dashed rounded border-4">
         Click here to upload image
       </span>
@@ -80,7 +80,7 @@
     <label class="input-label mt-4 text-base" for="content" id="content-label">
       Post Content
     </label>
-    <textarea class="text-area h-64 border-bottom-black text-gray-700 bg-gray-100 focus:shadow-outline-black" id="content" on:change={e => { post.set(e.target.value)}}/>
+    <textarea class="text-area h-64 border-bottom-black text-gray-700 bg-gray-100 focus:shadow-outline-black" id="content" on:change={e => { post.update(o => ({ ...o, content: e.target.value })); }}/>
   </div>
 
   <div class="mt-4 flex justify-end">

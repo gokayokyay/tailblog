@@ -1,3 +1,7 @@
 import { writable } from 'svelte/store';
 
-export const post = writable('');
+export const post = writable({
+  title: '',
+  category: '',
+  content: ''
+});
