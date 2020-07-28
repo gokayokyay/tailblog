@@ -67,7 +67,6 @@ h3 {
 
 .post-page-root {
   @apply w-full p-4 bg-gray-900 relative pt-24;
-  max-width: 768px;
 }
 
 /* @screen md {
@@ -83,7 +82,16 @@ h3 {
 }
 
 .post-page-main {
-  @apply bg-gray-100 rounded-md p-4 pt-24;
+  @apply bg-gray-100 rounded-md p-8;
+  padding-top: 6rem;
+  max-width: 768px;
+  margin: auto;
+}
+
+.post-page-recommends-container {
+  margin: auto;
+  @apply bg-gray-100 rounded-md p-8 mt-12;
+  max-width: 768px;
 }
 
 @tailwind utilities;

@@ -750,7 +750,6 @@ h3 {
   background-color: rgba(26, 32, 44, var(--bg-opacity));
   position: relative;
   padding-top: 6rem;
-  max-width: 768px;
 }
 
 /* @screen md {
@@ -770,8 +769,21 @@ h3 {
   background-color: #f7fafc;
   background-color: rgba(247, 250, 252, var(--bg-opacity));
   border-radius: 0.375rem;
-  padding: 1rem;
+  padding: 2rem;
   padding-top: 6rem;
+  max-width: 768px;
+  margin: auto;
+}
+
+.post-page-recommends-container {
+  margin: auto;
+  --bg-opacity: 1;
+  background-color: #f7fafc;
+  background-color: rgba(247, 250, 252, var(--bg-opacity));
+  border-radius: 0.375rem;
+  padding: 2rem;
+  margin-top: 3rem;
+  max-width: 768px;
 }
 
 .space-y-0 > :not(template) ~ :not(template) {
