@@ -1,64 +1,70 @@
 <script context="module">
-	export async function preload({ params, query }) {
-		// the `slug` parameter is available because
-		// this file is called [slug].svelte
-		const res = await this.fetch(`blog/${params.slug}.json`);
-		const data = await res.json();
-
-		if (res.status === 200) {
-			return { post: data };
-		} else {
-			this.error(res.status, data.message);
-		}
-	}
+  export async function preload({ params, query }) {
+    // the `slug` parameter is available because
+    // this file is called [slug].svelte
+    // const res = await this.fetch(`blog/${params.slug}.json`);
+    // const data = await res.json();
+    // if (res.status === 200) {
+    //   return { post: data };
+    // } else {
+    //   this.error(res.status, data.message);
+    // }
+    return {
+      post: {
+        title: 'This is title',
+        author: 'Gökay Okyay',
+        createdAt: Date.now(),
+        category: 'API Development Tips & Tricks',
+        content: `
+### Hey this is mock
+mock mock mock
+				`,
+      },
+    };
+  }
 </script>
 
 <script>
-	export let post;
+  import marked from 'marked';
+  export let post = {};
 </script>
 
 <style>
-	/*
-		By default, CSS is locally scoped to the component,
-		and any unused styles are dead-code-eliminated.
-		In this page, Svelte can't know which elements are
-		going to appear inside the {{{post.html}}} block,
-		so we have to use the :global(...) modifier to target
-		all elements inside .content
-	*/
-	.content :global(h2) {
-		font-size: 1.4em;
-		font-weight: 500;
-	}
-
-	.content :global(pre) {
-		background-color: #f9f9f9;
-		box-shadow: inset 1px 1px 5px rgba(0,0,0,0.05);
-		padding: 0.5em;
-		border-radius: 2px;
-		overflow-x: auto;
-	}
-
-	.content :global(pre) :global(code) {
-		background-color: transparent;
-		padding: 0;
-	}
-
-	.content :global(ul) {
-		line-height: 1.5;
-	}
-
-	.content :global(li) {
-		margin: 0 0 0.5em 0;
-	}
+  .author > img {
+    max-width: 75%;
+  }
 </style>
 
 <svelte:head>
-	<title>{post.title}</title>
+  <title>{post.title}</title>
 </svelte:head>
-
-<h1>{post.title}</h1>
-
-<div class='content'>
-	{@html post.html}
+<div class="post-page-root">
+  <div class="author absolute w-40 lg:w-32 h-28 top-0 mt-8 left-0 right-0 m-auto">
+    <img class="m-auto border-4 border-gray-100 rounded-full cover" src="https://i.pravatar.cc/300" alt="avatar" />
+    <p class="font-bold text-center">{post.author}</p>
+  </div>
+  <div class="post-page-main">
+    <div class="post-page-head mb-8">
+      <div class="post-page-metadata">
+        <p class="mb-2 text-xs text-right text-gray-500 italic">Created at {new Date(post.createdAt).toUTCString()}</p>
+      </div>
+      <h1 class="text-center">{post.title}</h1>
+      <div class="text-center">
+        <p class="text-gray-500 tracking-widest text-sm">{post.category}</p>
+      </div>
+    </div>
+    {@html marked(post.content || '')}
+  </div>
+  <div class="post-footer flex mt-4">
+    <div class="flex-1 pr-8">
+      <div class="bg-gray-100 rounded-md px-8 py-4">
+        <span class="text-sm font-bold">Previous Post</span>
+      </div>
+    </div>
+    <div class="flex-1 pl-8">
+      <div class="bg-gray-100 rounded-md px-8 py-4 text-right">
+        <span class="text-sm font-bold">Next Post</span>
+      </div>
+    </div>
+  </div>
 </div>

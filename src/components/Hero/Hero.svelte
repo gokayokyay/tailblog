@@ -6,7 +6,7 @@
   const { preloading, page, session } = stores();
   let pageVal;
   let component = Default;
-  page.subscribe(async val => {
+  page.subscribe(async (val) => {
     pageVal = val;
     component = await HeroMap(val);
   });

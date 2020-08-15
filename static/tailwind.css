@@ -10,7 +10,7 @@ h3 {
 }
 @tailwind components;
 .nav-li {
-  @apply px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black
+  @apply px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black;
 }
 @responsive {
   .sidebar {
@@ -66,7 +66,7 @@ h3 {
 }
 
 .post-page-root {
-  @apply w-full p-4 bg-gray-900 relative pt-24;
+  @apply w-full bg-gray-900 relative p-4 pt-24;
 }
 
 /* @screen md {
@@ -74,12 +74,6 @@ h3 {
     @apply p-8;
   }
 } */
-
-@screen lg {
-  .post-page-root {
-    @apply p-12;
-  }
-}
 
 .post-page-main {
   @apply bg-gray-100 rounded-md p-8;
@@ -90,7 +84,7 @@ h3 {
 
 .post-page-recommends-container {
   margin: auto;
-  @apply bg-gray-100 rounded-md p-8 mt-12;
+  @apply rounded-md;
   max-width: 768px;
 }
 
